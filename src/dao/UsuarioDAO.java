@@ -14,7 +14,7 @@ public class UsuarioDAO {
 	}
 
 	public boolean consulta(Usuario user) {
-		String sql = "SELECT ID, USUARIO, SENHA FROM USUARIO WHERE SENHA = ? AND USUARIO = ?";
+		String sql = "SELECT ID, USUARIO, SENHA FROM USUARIOS WHERE SENHA = ? AND USUARIO = ?";
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.setString(1, user.getSenha());
 			pstm.setString(2, user.getUsuario());
