@@ -3,7 +3,6 @@ package controller;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
-
 import dao.ReservaDAO;
 import factory.ConnectionFactory;
 import modelo.Reserva;
@@ -26,14 +25,13 @@ public class ReservaController {
 		return reservaDAO.listar();
 	}
 	
-//	public String calculaValor(String dataEntrada, String dataSaida) {
-//		
-//			this.reserva.calculaValor(dataEntrada, dataSaida);
-//			return this.reserva.getValor().toString();
-//	}
+	public String calculaValorReserva(String dataEntrada, String dataSaida) {
+		reserva = new Reserva();
+		reserva.calculaValorReserva(dataEntrada, dataSaida);
+		return reserva.getValor();
+	}
 	
 	public int getIdReserva() {
 		return reserva.getId();
 	}
-
 }

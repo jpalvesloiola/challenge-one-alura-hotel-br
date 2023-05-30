@@ -53,6 +53,8 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		usuario = new UsuarioController();
+		
 		setResizable(false);
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -240,7 +242,7 @@ public class Login extends JFrame {
 	}
 
 	private void login() {
-		usuario = new UsuarioController();
+		
 
 		String senha = new String(txtSenha.getPassword());
 		

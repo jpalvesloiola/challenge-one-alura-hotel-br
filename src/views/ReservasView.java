@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.text.Format;
 import java.util.Calendar;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -43,6 +44,7 @@ public class ReservasView extends JFrame {
 	private JLabel lblValorSimbolo;
 	private JLabel labelAtras;
 	private ReservaController reservaController;
+	
 
 	/**
 	 * Launch the application.
@@ -65,9 +67,9 @@ public class ReservasView extends JFrame {
 	 */
 	public ReservasView() {
 		super("Reserva");
-
+		
 		reservaController = new ReservaController();
-
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ReservasView.class.getResource("/imagenes/aH-40px.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 560);
@@ -119,6 +121,9 @@ public class ReservasView extends JFrame {
 		txtDataE.setFont(new Font("Roboto", Font.PLAIN, 18));
 		panel.add(txtDataE);
 
+		
+		
+		
 		lblValorSimbolo = new JLabel("$");
 		lblValorSimbolo.setVisible(false);
 		lblValorSimbolo.setBounds(121, 332, 17, 25);
@@ -152,6 +157,10 @@ public class ReservasView extends JFrame {
 				// Ativa o evento, após o usuário selecionar as datas, o valor da reserva deve
 				// ser calculado
 				calcularValor(txtDataE, txtDataS);
+				String dataEntrada = ((JTextField)txtDataE.getDateEditor().getUiComponent()).getText();
+				String dataSaida = ((JTextField)txtDataS.getDateEditor().getUiComponent()).getText();
+				reservaController.calculaValorReserva(dataEntrada, dataSaida);
+				System.out.println(dataEntrada);
 			}
 		});
 		txtDataS.setDateFormatString("yyyy-MM-dd");
@@ -159,6 +168,8 @@ public class ReservasView extends JFrame {
 		txtDataS.setBorder(new LineBorder(new Color(255, 255, 255), 0));
 		panel.add(txtDataS);
 
+		
+		
 		txtValor = new JTextField();
 		txtValor.setBackground(SystemColor.text);
 		txtValor.setHorizontalAlignment(SwingConstants.CENTER);
@@ -177,6 +188,8 @@ public class ReservasView extends JFrame {
 		panel.add(lblValor);
 
 		txtFormaPagamento = new JComboBox();
+		
+		txtFormaPagamento = new JComboBox<String>();
 		txtFormaPagamento.setBounds(68, 417, 289, 38);
 		txtFormaPagamento.setBackground(SystemColor.text);
 		txtFormaPagamento.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
